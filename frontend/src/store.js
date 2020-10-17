@@ -1,5 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
+
 import thunk from "redux-thunk";
+
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // Product Reducers
@@ -12,7 +14,11 @@ import {
   productReviewCreateReducer,
   productTopRatedReducer
 } from "./reducers/productReducers.js";
+
+// Cart Reducers
 import { cartReducer } from "./reducers/cartReducers";
+
+// User Reducers
 import {
   userLoginReducer,
   userRegisterReducer,
@@ -22,6 +28,8 @@ import {
   userDeleteReducer,
   userUpdateReducer
 } from "./reducers/userReducers";
+
+// Order Reducers
 import {
   orderCreateReducer,
   orderDetailsReducer,

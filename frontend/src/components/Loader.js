@@ -13,7 +13,9 @@ const Loader = () => {
         display: "block",
       }}
     >
-      <span className="sr-only">Loading...</span>
+      <span className="sr-only" style={{ color: "black" }}>
+        Loading...
+      </span>
     </Spinner>
   );
 };

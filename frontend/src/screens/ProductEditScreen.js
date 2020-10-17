@@ -13,6 +13,7 @@ import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 
 import { listProductDetails, updateProduct } from "../actions/productActions";
+
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 
 const ProductEditScreen = ({ match, history }) => {
@@ -44,7 +45,7 @@ const ProductEditScreen = ({ match, history }) => {
       dispatch({
         type: PRODUCT_UPDATE_RESET,
       });
-      history.push("/admin/productList");
+      history.push("/admin/productlist");
     } else {
       if (!product.name || product._id !== productId) {
         dispatch(listProductDetails(productId));
@@ -104,7 +105,7 @@ const ProductEditScreen = ({ match, history }) => {
 
   return (
     <>
-      <Link to="/admin/productList" className="btn btn-light my-3">
+      <Link to="/admin/productlist" className="btn btn-light my-3">
         Go Back
       </Link>
       <FormContainer>

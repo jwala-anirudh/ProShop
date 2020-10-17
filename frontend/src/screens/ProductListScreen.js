@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import { LinkContainer } from "react-router-bootstrap";
 
 import { Table, Button, Row, Col } from "react-bootstrap";
@@ -14,6 +15,7 @@ import {
   deleteProduct,
   createProduct,
 } from "../actions/productActions";
+
 import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 
 const ProductListScreen = ({ history, match }) => {
@@ -43,11 +45,9 @@ const ProductListScreen = ({ history, match }) => {
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    dispatch({
-      type: PRODUCT_CREATE_RESET,
-    });
+    dispatch({ type: PRODUCT_CREATE_RESET });
 
-    if (!userInfo.isAdmin) {
+    if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
 
@@ -58,8 +58,8 @@ const ProductListScreen = ({ history, match }) => {
     }
   }, [
     dispatch,
-    userInfo,
     history,
+    userInfo,
     successDelete,
     successCreate,
     createdProduct,
@@ -67,7 +67,7 @@ const ProductListScreen = ({ history, match }) => {
   ]);
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you sure?")) {
+    if (window.confirm("Are you sure")) {
       dispatch(deleteProduct(id));
     }
   };
