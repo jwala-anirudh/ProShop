@@ -23,6 +23,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from "../constants/orderConstants";
+import { emptyCartItems } from "../actions/cartActions";
 
 const OrderScreen = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -83,6 +84,7 @@ const OrderScreen = ({ match, history }) => {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
+      dispatch(emptyCartItems());
     } else if (!order.isPaid) {
       if (!window.paypal) {
         addPayPalScript();
